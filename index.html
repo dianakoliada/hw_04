@@ -9,6 +9,62 @@
 </head>
 
 <body>
+   <script>
+
+      //1.
+      let arr = ['455', 87.15, true, undefined, 7, null, 'false', [], {},];
+
+      for (key of arr) {
+         console.log(`type of: ${typeof key}`);
+         if (typeof key === 'number') {
+            key = key + 3;
+            console.log(key);
+         }
+      }
+
+      //2. 
+      let integer = +prompt('Enter some integer');
+      let arrNum = []; // массив из случайных элементов
+      let arrNumCopy = []; //новый скопированный массив
+
+      arrNum.length = integer; //присваиваю массиву длину, равную введенному числу
+      arrNumCopy.length = integer; //присваиваю массиву длину, равную введенному числу
+      for (let i = 0; i < integer; i++) {
+         arrNum[i] = Math.floor(Math.random() * 10); //генерирую случайные числа и присваиваю их массиву  
+      }
+
+      arrNumCopy = Object.assign([], arrNum);
+      for (let i = 0; i < integer; i++) {
+         if (((i + 1) % 3) == 0) {
+            arrNumCopy[i] = arrNumCopy[i] * 3;
+         }
+      }
+      console.log(arrNum);
+      console.log(arrNumCopy);
+
+      //3.
+      const student1 = {
+         firstName: 'Alex',
+         lastName: 'Winter',
+         mark: 10,
+      };
+
+      const student2 = { ...student1 }; // copy of student1
+      student2.mark = 11;
+
+      const student3 = Object.assign({}, student1);
+      student3.mark = 12;
+      console.log(student1, student2, student3);
+
+      let sumResult = student1.mark + student2.mark + student3.mark;
+      let averageResult = sumResult / 3;
+      console.log(+ averageResult.toFixed(1));
+
+      for (let key in student1) {
+         console.log(`key = ${key}, value = ${student1[key]}`);
+      }
+
+   </script>
 
 </body>
 
